@@ -83,7 +83,7 @@
     background-color: #0056b3;
   }
 
-  .mainMenu a {
+  #newOrderBtn {
     display: block;
     text-decoration: none;
     margin: 30px 400px;
@@ -95,7 +95,7 @@
     border: 2px black solid;
   }
 
-  .mainMenu a:hover {
+  #newOrderBtn:hover {
     border: 2px rgb(151, 121, 83) solid;
     color: rgb(151, 121, 83);
     background-color: white;

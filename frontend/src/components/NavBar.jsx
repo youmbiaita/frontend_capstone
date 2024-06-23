@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./NavBar.css";
 
-const NavBar = () => {
+const NavBar = ({orderCount}) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light ">
     <Link className="navbar-brand" to="/">Home</Link>
@@ -21,13 +22,17 @@ const NavBar = () => {
         <li className="nav-item" >
           <Link className="nav-link" to="/menu">Menu</Link>
         </li>
+        <li className="nav-item" >
+          <Link className="nav-link" to="/newOrder">Add Item</Link>
+        </li>
       </ul>
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
           <Link className="nav-link" to="#">Login</Link>
         </li>
         <li className="nav-item">
-          <Link className="nav-link" to="#">Cart</Link>
+          <span>{orderCount}</span>
+          <Link className="nav-link" to="/cart">Cart</Link>
         </li>
       </ul>
     </div>
