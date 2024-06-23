@@ -1,7 +1,13 @@
 .home {
-  background-color: rgb(62, 81, 35);
+  background-color: rgb(241, 241, 241);
   text-align: center;
-  width: 100vh;
+  width: 100vmax;
+  height: auto;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: row;
   }
   
   
@@ -12,7 +18,7 @@
   }
   
   .homepage {
-    color: white;
+    color: black;
   }
   
   ul {
