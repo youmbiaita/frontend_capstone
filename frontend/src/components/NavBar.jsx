@@ -26,10 +26,19 @@ const NavBar = ({orderCount}) => {
         <li className="nav-item" >
           <Link className="nav-link" to="/newOrder">Add Item</Link>
         </li>
+        <li className="nav-item" >
+          <Link className="nav-link" to="/order">Order List</Link>
+        </li>
+        <li className="nav-item" >
+          <Link className="nav-link" to="/about">About Us</Link>
+        </li>
+        <li className="nav-item" >
+          <Link className="nav-link" to="/contact">Contact Us</Link>
+        </li>
       </ul>
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
-          <Link className="nav-link" to="#">Login</Link>
+          <Link className="nav-link" to="login">Login</Link>
         </li>
         <li className="nav-item">
           <span>{orderCount}</span>

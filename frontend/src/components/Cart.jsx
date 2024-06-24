@@ -70,11 +70,18 @@ const Cart = ({ items, callback }) => {
                 <hr />
                 <h4>Sub Total: ${parseInt(item.price) * quantity}</h4>
                 <button
+                  className=""
+                  onClick={() => callback(item._id)}
+                >
+                  Edith
+                </button>
+                <button
                   className="btn btn-danger"
                   onClick={() => callback(item._id)}
                 >
                   Remove
                 </button>
+
               </div>
             </div>
           ))}

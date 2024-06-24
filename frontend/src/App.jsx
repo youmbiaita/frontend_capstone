@@ -9,7 +9,9 @@ import HomePage from "./components/HomePage";
 import Cart from "./components/Cart";
 import NewOrder from "./components/NewOrder";
 import Register from "./components/Registration";
-// import Login from "./components/Login";
+import Login from "./components/Login";
+import Orders from "./components/Order";
+import ContactForm from "./components/Contact";
 
 import "./App.css";
 
@@ -42,7 +44,10 @@ function App() {
           {/* <Route path="/register" element={<LoginPage/>} /> */}
           <Route path="/newOrder" element={<NewOrder callback={handleAddToCart}/>} />
           <Route path="/register" element={<Register/>} />
-          {/* <Route path="/login" element={<Login/>} /> */}
+          <Route path="/login" element={<Login/>} />
+          <Route path="/contact" element={<ContactForm/>} />
+
+          <Route path="/order" element={<Orders/>} />
 
         </Routes>
       </div>

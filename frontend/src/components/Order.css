@@ -1,0 +1,32 @@
+.orders {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .orders-title {
+    margin: 20px 0;
+  }
+  
+  .orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .order-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+  }
+  
+  .order-items {
+    margin-top: 10px;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+  }
+  
+  .order-item-detail {
+    margin-bottom: 10px;
+  }
+  
