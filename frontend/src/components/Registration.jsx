@@ -1,35 +1,49 @@
-import React, { useState } from 'react';
-import './Registration.css';
+import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import "./Registration.css";
+
 
 const Register = () => {
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [message, setMessage] = useState('');
-  
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      try {
-        const response = await fetch('https://backend-capstone-6-moig.onrender.com/users', {
-          method: 'POST',
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(
+        "https://backend-capstone-6-moig.onrender.com/users",
+        {
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
-          body: JSON.stringify({ name, email, password }),
-        });
-        const data = await response.json();
-        if (response.ok) {
-          setMessage('Registration successful!');
-          history.push('/login');
-          // Optionally, redirect to login page or another page
-        } else {
-          setMessage(`Registration failed: ${data.message}`);
+          body: JSON.stringify({ name, email, password, isAdmin }),
         }
-      } catch (error) {
-        console.error('Error during registration:', error);
-        setMessage('An error occurred. Please try again.');
+      );
+
+      const data = await response.json();
+      if (response.ok) {
+        setMessage("Registration successful!");
+        setName('');
+        setEmail('');
+        setPassword('');
+  
+        setTimeout(() => {
+          navigate('/login');
+        }, 2000);
+       
+      } else {
+        setMessage(`Registration failed: ${data.message}`);
       }
-    };
+    } catch (error) {
+      console.error("Error during registration:", error);
+      setMessage("An error occurred. Please try again.");
+    }
+  };
 
   return (
     <div className="register-container">
@@ -68,7 +82,9 @@ const Register = () => {
             required
           />
         </div>
-        <button type="submit" className="btn btn-primary">Register</button>
+        <button type="submit" className="btn btn-primary">
+          Register
+        </button>
       </form>
     </div>
   );
