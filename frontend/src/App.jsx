@@ -20,6 +20,16 @@ function App() {
     console.log("Cart:", cart);
   };
 
+  const removeItem = (id) => {
+    for (let i = 0; i < cart.length; i++) {
+      if (id === cart[i]._id) {
+        cart.splice(i, 1);
+      }
+    }
+    setCart([...cart])
+    console.log("Remove to Cart:", cart);
+  };
+
   return (
     <>
       <div className="home">
@@ -27,7 +37,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/menu" element={<Menu/>} />
-          <Route path="/cart" element={<Cart items={cart} />} />
+          <Route path="/cart" element={<Cart items={cart} callback={removeItem}/>} />
           {/* <Route path="/register" element={<LoginPage/>} /> */}
           <Route path="/newOrder" element={<NewOrder callback={handleAddToCart}/>} />
           <Route path="/register" element={<Register/>} />

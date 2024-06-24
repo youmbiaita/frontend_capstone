@@ -1,26 +1,35 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Registration.css';
 
 const Register = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
+    const navigate = useNavigate();
   
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
-        const response = await fetch('https://backend-capstone-6-moig.onrender.com/users', {
+        const response = await fetch('https://backend-capstone-6-moig.onrender.com/users/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ name, email, password }),
+          body: JSON.stringify({ name, email}),
         });
         const data = await response.json();
         if (response.ok) {
           setMessage('Registration successful!');
-          history.push('/login');
+          setErrorMessage('');
+      setName('');
+      setEmail('');
+      setTimeout(() => {
+        nagivate("/login")
+      }, 3000)
+          //history.push('/login');
           // Optionally, redirect to login page or another page
         } else {
           setMessage(`Registration failed: ${data.message}`);
@@ -54,17 +63,6 @@ const Register = () => {
             className="form-control"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            className="form-control"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>

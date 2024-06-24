@@ -3,7 +3,6 @@ import "./Menu.css";
 
 const Menu = () => {
   const [menus, setMenus] = useState([]);
-  const [cart, setCart] = useState([]);
 
   const BASE_URL = "https://backend-capstone-6-moig.onrender.com";
 
