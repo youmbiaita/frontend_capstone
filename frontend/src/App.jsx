@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 // import AdminPage from "./components/AdminPage";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from "./components/NavBar";
 import Menu from "./components/Menu";
 // import LoginPage from "./components/LoginPage";
