@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {faCheck, faTimes, faInfoCircle, faFontAwesome} from "@fortawesome/free-solid-svg-icons"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import './Registration.css';
 
 const Register = () => {
