@@ -1,12 +1,12 @@
 
 .registration-container {
-    max-width: 400px;
-    margin: 50px auto;
+    width: 50vh;
+    margin: auto;
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+    background-color: #bebebe;
   }
   
   .registration-title {
