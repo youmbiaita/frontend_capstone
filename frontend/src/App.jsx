@@ -11,11 +11,12 @@ import NewOrder from "./components/NewOrder";
 import Register from "./components/Registration";
 import Login from "./components/Login";
 import Orders from "./components/Order";
+import Users from "./components/User";
 import ContactForm from "./components/Contact";
 import About from "./components/About";
 import Footer from "./components/Footer";
-
 import "./App.css";
+
 
 
 function App() {
@@ -42,13 +43,12 @@ function App() {
   };
 
   const removeItem = (id) => {
-    for (let i = 0; i < cart.length; i++) {
-      if (id === cart[i]._id) {
-        cart.splice(i, 1);
-      }
+    const updatedCart = [...cart];
+    const index = updatedCart.findIndex((item) => item._id === id);
+    if (index !== -1) {
+      updatedCart.splice(index, 1); // Remove one instance of the item
+      setCart(updatedCart);
     }
-    setCart([...cart])
-    console.log("Remove to Cart:", cart);
   };
 
   return (
@@ -64,6 +64,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/contact" element={<ContactForm/>} />
           <Route path="/order" element={<Orders/>} />
+          <Route path="/user" element={<Users/>} />
           <Route path="/about" element={<About/>} />
 
         </Routes>

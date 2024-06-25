@@ -7,8 +7,23 @@ import "./Login.css";
 const Login = ({handleLogin}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+
+  const BASE_URL = "https://backend-capstone-6-moig.onrender.com";
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleAdminChange = (e) => {
+    setIsAdmin(e.target.checked);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,7 +34,7 @@ const Login = ({handleLogin}) => {
       if (response.user.isAdmin) {
         navigate('/menu');
       } else {
-        navigate('/place-order');
+        navigate('/newOrder');
       }
     } catch (error) {
       console.error("Login error:", error);
@@ -50,12 +65,13 @@ const Login = ({handleLogin}) => {
     <div className="login-container">
       <h2>Login</h2>
       {error && <p className="error">{error}</p>}
-      <form className='login-form' onSubmit={handleLogin}>
+      <form className='login-form' onSubmit={handleSubmit}>
         <label>Email</label>
         <input
           type="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={handleEmailChange}
+          placeholder="Email"
           required
         />
         <FaRegCircleUser className="icon" />
@@ -63,7 +79,8 @@ const Login = ({handleLogin}) => {
         <input
           type="password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={handlePasswordChange}
+          placeholder="Password"
           required
         />
         <MdLockPerson className="icon" />
@@ -74,10 +91,7 @@ const Login = ({handleLogin}) => {
           </label>
           <a href="#">Forgot Password</a>
         </div>
-        <div className="form-group">
-          <label htmlFor="isAdmin">Admin</label>
-          <input type="checkbox" id="isAdmin" />
-        </div>
+        
 
         <button type="submit">Login</button>
         <div className="register-link">

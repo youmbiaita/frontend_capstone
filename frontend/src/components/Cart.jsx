@@ -240,7 +240,7 @@ const Cart = ({ items, callback }) => {
   };
 
   const handleEditItem = (itemId) => {
-    navigate(`/add-item/${itemId}`);
+    navigate('/newOrder');
   };
 
   return (

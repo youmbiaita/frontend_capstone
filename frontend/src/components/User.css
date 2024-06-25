@@ -1,0 +1,25 @@
+.user-list {
+    width: 80%;
+    margin: 20px auto;
+  }
+  
+  .user-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .user-item p {
+    margin: 5px 0;
+  }
+  
+  .user-item input {
+    margin-bottom: 5px;
+    padding: 5px;
+    width: 100%;
+  }
+  
+  .user-item button {
+    margin-right: 10px;
+  }
+  
