@@ -3,20 +3,39 @@ import "./Order.css";
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
+  const [error, setError] = useState("");
 
   const BASE_URL = "https://backend-capstone-6-moig.onrender.com";
 
-  useEffect(() => {
+   useEffect(() => {
     fetch(`${BASE_URL}/orders`)
-      .then((response) => response.json())
-      .then((order) => setOrders(order))
-      .catch((error) => console.error("Error fetching order:", error));
+      .then((response) => {
+        if (!response.ok) {
+          return response.text().then((text) => {
+            throw new Error(text);
+          });
+        }
+        return response.json();
+      })
+      .then((data) => setOrders(data))
+      .catch((error) => {
+        console.error("Error fetching orders:", error);
+        setError(error.message);
+      });
   }, []);
+
+  // useEffect(() => {
+  //   fetch(`${BASE_URL}/orders`)
+  //     .then((response) => response.json())
+  //     .then((order) => setOrders(order))
+  //     .catch((error) => console.error("Error fetching order:", error));
+  // }, []);
 
 
   return (
     <div className="orders">
     <h2 className="orders-title">Orders</h2>
+    {/* {error && <p className="error-message">{error}</p>} */}
     {orders.length > 0 ? (
       <div className="orders-list">
         {orders.map((order) => (

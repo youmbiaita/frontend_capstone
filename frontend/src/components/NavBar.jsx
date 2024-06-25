@@ -6,7 +6,7 @@ import "./NavBar.css";
 const NavBar = ({orderCount}) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light ">
-    <Link className="navbar-brand" to="/">Home</Link>
+      <Link className="navbar-brand" id="afood" to="/">AFOOD</Link>
     <button
       className="navbar-toggler"
       type="button"

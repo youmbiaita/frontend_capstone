@@ -79,7 +79,7 @@ const Register = () => {
             className="form-control"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required
+          
           />
         </div>
         <button type="submit" className="btn btn-primary">

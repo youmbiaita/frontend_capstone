@@ -13,3 +13,10 @@
     border-radius: 200px;
     padding: 0 1px 1px 0;
 }
+
+#afood {
+    padding: 5px 10px;
+}
+#afood:hover {
+    background-color: rgb(209, 174, 128);
+}

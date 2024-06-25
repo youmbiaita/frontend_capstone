@@ -73,7 +73,10 @@ const ContactForm = () => {
           />
         </div>
         <button type="submit">Send Message</button>
+       
       </form>
+      <img src="https://th.bing.com/th/id/OIP.1Kcxi8zZj3xqxmU6FF1l4wHaF7?rs=1&pid=ImgDetMain" alt="resto" />
+      
     </div>
   );
 };
