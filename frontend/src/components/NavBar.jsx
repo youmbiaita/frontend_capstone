@@ -24,10 +24,10 @@ const NavBar = ({orderCount}) => {
           <Link className="nav-link" to="/menu">Menu</Link>
         </li>
         <li className="nav-item" >
-          <Link className="nav-link" to="/order">Orders</Link>
+          <Link className="nav-link" to="/order">Order List</Link>
         </li>
         <li className="nav-item" >
-          <Link className="nav-link" to="/user">Users </Link>
+          <Link className="nav-link" to="/user">User</Link>
         </li>
         <li className="nav-item" >
           <Link className="nav-link" to="/about">About Us</Link>
