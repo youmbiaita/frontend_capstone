@@ -41,7 +41,7 @@ const Login = ({handleLogin}) => {
     }
     
        const response = await fetch(
-         "https:backend-capstone-6-moig.onrender.com/auth/login",
+         "https:backend-capstone-6-moig.onrender.com/users",
          {
            method: "POST",
            headers: { "Content-Type": "application/json" },
