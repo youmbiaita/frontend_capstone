@@ -2,7 +2,7 @@ render.backend=
 
 ## Capstone title: Online Restaurant
 
-This project is a restaurant menu and ordering system built with React for the frontend and Node.js/Express for the backend. The application allows users to view menu items, add items to a cart, and place orders. Admins can add, edit, and remove menu items.
+I built this restaurant project to combine my technical skills with my personal connection to the culinary world. My dad passed away last month, being a cook, has always inspired me with his passion for food and service. This project is a tribute to his dedication and an opportunity to create a digital platform that enhances the dining experience for customers. By developing this application,
 
 ## Features
   - View menu items
