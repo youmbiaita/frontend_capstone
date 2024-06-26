@@ -52,7 +52,7 @@ This project is a restaurant menu and ordering system built with React for the f
 
 ## links
 
-# Capstone frontend Netlify link : 
+# Capstone frontend Netlify link :https://tchakounte-restaurant.netlify.app/
 
 # Capstone backtend Render link: https://backend-capstone-6-moig.onrender.com
 
