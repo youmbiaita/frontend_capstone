@@ -1,7 +1,9 @@
+//import
 import React, { useState, useEffect } from 'react';
 import './User.css';
 
 const Users = () => {
+  //state to store
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -10,6 +12,8 @@ const Users = () => {
   const [editEmail, setEditEmail] = useState('');
   const BASE_URL = 'https://backend-capstone-6-moig.onrender.com';
 
+
+  // useEffect hook to fetch users from the API when the component mounts
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -23,15 +27,17 @@ const Users = () => {
       }
     };
 
-    fetchUsers();
+    fetchUsers(); //call back
   }, []);
 
+  // Function to handle the edit button click
   const handleEditClick = (user) => {
     setEditingUserId(user._id);
     setEditName(user.name);
     setEditEmail(user.email);
   };
 
+   // Function to handle the save button click after editing a user
   const handleSaveClick = async (userId) => {
     try {
       const response = await fetch(`${BASE_URL}/users/${userId}`, {
@@ -39,12 +45,12 @@ const Users = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name: editName, email: editEmail }),
+        body: JSON.stringify({ name: editName, email: editEmail }),// Send the updated user data in the request body
       });
 
       if (response.ok) {
         setUsers(users.map((user) => (user._id === userId ? { ...user, name: editName, email: editEmail } : user)));
-        setEditingUserId(null);
+        setEditingUserId(null);  // Reset the editing user ID
       } else {
         console.error('Failed to update user');
       }
@@ -53,10 +59,13 @@ const Users = () => {
     }
   };
 
+  // Function to handle the cancel button click during editing
   const handleCancelClick = () => {
     setEditingUserId(null);
   };
 
+
+  // Function to handle the delete button click
   const handleDeleteClick = async (userId) => {
     try {
       const response = await fetch(`${BASE_URL}/users/${userId}`, {

@@ -7,6 +7,8 @@ const Orders = () => {
 
   const BASE_URL = "https://backend-capstone-6-moig.onrender.com";
 
+
+  // useEffect hook to fetch orders from the API when the component mounts
    useEffect(() => {
     fetch(`${BASE_URL}/orders`)
       .then((response) => {
@@ -23,14 +25,6 @@ const Orders = () => {
         setError(error.message);
       });
   }, []);
-
-  // useEffect(() => {
-  //   fetch(`${BASE_URL}/orders`)
-  //     .then((response) => response.json())
-  //     .then((order) => setOrders(order))
-  //     .catch((error) => console.error("Error fetching order:", error));
-  // }, []);
-
 
   return (
     <div className="orders">

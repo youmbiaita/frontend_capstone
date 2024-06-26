@@ -80,7 +80,7 @@ const Menu = () => {
             <div className="menu-item-content">
               <h4  className="title">{menu.description}</h4>
               <h4>Price: ${menu.price}</h4>
-              <button onClick={() => handleEdit(menu)}>Edit</button>
+              <button className='edit' onClick={() => handleEdit(menu)}>Edit</button>
               <button onClick={() => handleRemove(menu._id)}>Remove</button>
             </div>
           </div>

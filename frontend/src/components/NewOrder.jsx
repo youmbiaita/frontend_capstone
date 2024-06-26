@@ -7,6 +7,7 @@ const NewOrder = ({callback}) => {
   const [menus, setMenus] = useState([]);
   const BASE_URL = "https://backend-capstone-6-moig.onrender.com";
 
+  // useEffect hook to fetch menu items from the API when the component mounts
   useEffect(() => {
     fetch(`${BASE_URL}/menus`)
       .then((response) => response.json())

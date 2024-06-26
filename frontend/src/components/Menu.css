@@ -78,6 +78,14 @@
     cursor: pointer;
     border-radius: 5px;
   }
+
+  .edit {
+    background-color: #e90e0e;
+  }
+
+  .edit:hover {
+    background-color: #6f3e3e;
+  }
   
   .menu-item-content .add-to-cart:hover {
     background-color: #0056b3;
