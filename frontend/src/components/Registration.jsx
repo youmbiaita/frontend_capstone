@@ -1,41 +1,60 @@
-import React, { useState } from "react";
+// import
+import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import "./Registration.css";
 
-
 const Register = () => {
+  //state to store
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isAdmin, setIsAdmin] = useState(false);
   const [message, setMessage] = useState("");
+  const [users, setUsers] = useState([]);
   const navigate = useNavigate();
+  const BASE_URL = "https://backend-capstone-6-moig.onrender.com";
+
+ // Fetch the list of users from the server when the component mounts
+  useEffect(() => {
+    fetch(`${BASE_URL}/users`)
+      .then((response) => response.json())
+      .then((data) => setUsers(data))
+      .catch((error) => console.error("Error fetching users:", error));
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+
+    // Check if the username or email already exists in the fetched users lis
+    const existingUser = users.find(
+      user => user.name.toLowerCase() === name.toLowerCase() || user.email.toLowerCase() === email.toLowerCase()
+    );
+
+
+    // If the username or email already exists, set an error message and return
+    if (existingUser) {
+      setMessage("Username or email already exists. Please try again.");
+      return;
+    }
+
     try {
+        // Send a POST request to register the new user
       const response = await fetch(
-        "https://backend-capstone-6-moig.onrender.com/users",
+        `${BASE_URL}/users`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ name, email, password, isAdmin }),
+          body: JSON.stringify({ name, email }),//request body
         }
       );
 
       const data = await response.json();
+       // If the registration is successful, reset the form and set a success message
       if (response.ok) {
         setMessage("Registration successful!");
         setName('');
         setEmail('');
-        setPassword('');
-  
-        setTimeout(() => {
-          navigate('/login');
-        }, 2000);
-       
       } else {
         setMessage(`Registration failed: ${data.message}`);
       }
@@ -48,6 +67,7 @@ const Register = () => {
   return (
     <div className="register-container">
       <h2>Register</h2>
+      {message && <p>{message}</p>}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="name">Name</label>
@@ -71,17 +91,7 @@ const Register = () => {
             required
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            className="form-control"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          
-          />
-        </div>
+      
         <button type="submit" className="btn btn-primary">
           Register
         </button>
@@ -91,3 +101,4 @@ const Register = () => {
 };
 
 export default Register;
+

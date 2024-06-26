@@ -9,7 +9,6 @@ import HomePage from "./components/HomePage";
 import Cart from "./components/Cart";
 import NewOrder from "./components/NewOrder";
 import Register from "./components/Registration";
-import Login from "./components/Login";
 import Orders from "./components/Order";
 import Users from "./components/User";
 import ContactForm from "./components/Contact";
@@ -24,22 +23,10 @@ function App() {
   const [user, setUser] = useState(null);
   const BASE_URL = "https://backend-capstone-6-moig.onrender.com";
   
-  const handleLogin = async (email, password) => {
-    const response = await fetch(`${BASE_URL}/auth/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    });
-    const data = await response.json();
-    setUser(data.user);
-    return data;
-  };
 
   const handleAddToCart = (menu) => {
     setCart([...cart, menu]);
-    console.log("Cart:", cart);
+   
   };
 
   const removeItem = (id) => {
@@ -61,7 +48,6 @@ function App() {
           <Route path="/cart" element={<Cart items={cart} callback={removeItem}/>} />
           <Route path="/newOrder" element={<NewOrder callback={handleAddToCart}/>} />
           <Route path="/register" element={<Register/>} />        
-          <Route path="/login" element={<Login />} />
           <Route path="/contact" element={<ContactForm/>} />
           <Route path="/order" element={<Orders/>} />
           <Route path="/user" element={<Users/>} />

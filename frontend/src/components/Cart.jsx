@@ -156,6 +156,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Cart.css";
 
+//set all variables
 const Cart = ({ items, callback }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -164,6 +165,7 @@ const Cart = ({ items, callback }) => {
   const BASE_URL = "https://backend-capstone-6-moig.onrender.com";
   const navigate = useNavigate();
 
+// use useEffect to call the Api
   useEffect(() => {
     fetch(`${BASE_URL}/users`)
       .then((response) => response.json())
@@ -171,6 +173,7 @@ const Cart = ({ items, callback }) => {
       .catch((error) => console.error("Error fetching users:", error));
   }, []);
 
+  // this for loop keeps track of the quantities of each items
   let quantityMap = new Map();
   for (const item of items) {
     if (quantityMap.has(item)) {
@@ -181,15 +184,27 @@ const Cart = ({ items, callback }) => {
     }
   }
 
+  // function to handle username
   const handleUsernameChange = (e) => {
     e.preventDefault();
     setUsername(e.target.value);
   };
 
+  // function to handle email
   const handleEmailChange = (e) => {
     e.preventDefault();
     setEmail(e.target.value);
   };
+  // function redirect to the new order
+  const handleEditItem = (itemId) => {
+    navigate('/newOrder');
+  };
+
+  // function processes the order form submission by finding the user,
+  //  creating the order data, and sending it to the server. 
+  //   including user not found, 
+  //   successful order placement, 
+  //   and errors during the fetch request.
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -237,10 +252,6 @@ const Cart = ({ items, callback }) => {
       console.error("Error during order placement:", error);
       setMessage("An error occurred. Please try again.");
     }
-  };
-
-  const handleEditItem = (itemId) => {
-    navigate('/newOrder');
   };
 
   return (

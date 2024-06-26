@@ -11,11 +11,7 @@ const HomePage = () => {
       <div className='home-btn'>
       <a href="/register">Registration</a>
       <a href="/newOrder">Place Order</a>
-      </div>
-      <img src='../images/anime.jpg' 
-       alt="Moving Image"
-       className='mocing-image' />
-      
+      </div>      
     </div>
     
   );

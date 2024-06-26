@@ -35,7 +35,6 @@ const Orders = () => {
   return (
     <div className="orders">
     <h2 className="orders-title">Orders</h2>
-    {/* {error && <p className="error-message">{error}</p>} */}
     {orders.length > 0 ? (
       <div className="orders-list">
         {orders.map((order) => (
